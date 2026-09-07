@@ -1,0 +1,56 @@
+Linked List 
+It is a linear data structure where elements are not stored in contiguous memory location but are instead together using pointers. Each Element in a linked list is called a node, which consist of data field and a reference to the next node in sequence.
+
+Linked has two things at a Node:-
+Data(Value) and Pointer (it will point to next node ke taraf)
+
+and last node it has null pointer in a Linked List
+
+
+Node Structure- A node in a single linked list typically has two field:
+Data field- stores actual value(eg integer)
+Pointer field(next) stores the address of next node
+
+CODE
+ struct Node{
+ 	int data;
+	Node* next;
+	};
+
+				Algorithm (Creating a linked list)
+
+//1. Define the node structure
+struct Node{
+	int main;
+	struct Node* next;
+	}
+//2. Helper function to create a new node
+struct Node* createNode(int value)
+{
+
+   //Allocate memory allocation 
+ struct Node* newNode = (struct Node*) =malloc(sizeof(struct Node));        // malloc(returns pointer)/+ allots memory allocation to struct Node 
+
+Deleting the LAst node:
+Input: head pointer of the linked list
+Output: Updated head pointer of the linked list
+
+1. If head == NULL or head.next == NULL then
+2.     If head != NULL then free(head)
+3.     Return NULL
+4. End If
+5.
+6. curr = head
+7. While curr.next.next != NULL do
+8.     curr = curr.next
+9. End While
+10 free(curr.next)
+11 curr.next = NULL
+
+
+insertion at any position
+Create a new node and assign data to it.Case 1 (Position = 1): If the position is the beginning, make the new node's next point to the current head, and update head to be this new node.Case 2 (Position > 1): Traverse the list starting from the head to find the node right before the desired position (i.e., position P - 1).If you reach the end of the list (NULL) before finding the position, the position is out of bounds.Point the next of the new node to the next of the current node.Point the next of the current node to the new node.
+
+
+DELETION AT ANY NODE
+empty (head == NULL). If it is, return.Case 1 (Position = 1): If deleting the first node, create a temporary pointer to head. Move head to head.next, and free the memory of the temporary pointer.Case 2 (Position > 1): Traverse the list to find the node right before the target deletion position (position P - 1).If either the current node or the target node (current.next) is NULL, the position is out of bounds.Keep a temporary pointer to the target node (current.next) so you can free it later.Change the next pointer of the current node to point to targetNode.next (skipping the target node).Free the memory of the target node to prevent leaks.
